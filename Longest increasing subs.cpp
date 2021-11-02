@@ -27,6 +27,7 @@ Constraints:
 -10^4 <= nums[i] <= 10^4
 */
 
+/////////////////////////////////////////////// using DP
 class Solution {
 public:
     // Dp Solution -> O(n^2);
@@ -49,5 +50,43 @@ public:
     return maxi;
     }
 };
+
+//////////////////////////////////////////////// using binary search
+//     // Time Complexiy : (N log N)
+//     int ceil_Idx(vector<int>& tail,int start, int end, int number){
+        
+while(start < end){
+     int mid = start + (end-start)/2;
+
+     if(tail[mid] >= number){
+         end = mid;
+     } else {
+         start = mid + 1;
+     }
+  }
+return end;
+}
+
+
+int lengthOfLIS(vector<int>& nums) {
+  //Binary search Solution -> nlogn 
+  int n = nums.size();
+  vector<int> tail;
+  int len = 1;
+
+  tail.push_back(nums[0]);
+
+  for(int i = 1; i < n; i++){
+
+      if(nums[i] > tail[len-1]){
+          tail.push_back(nums[i]); len++;
+      } else {
+          int c = ceil_Idx(tail, 0, len-1, nums[i]);
+          tail[c] = nums[i];
+      } 
+}
+return len;   
+}
+
 
 
