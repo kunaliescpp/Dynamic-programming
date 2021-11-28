@@ -57,19 +57,14 @@ public:
                     dp[i][j] = max(dp[i-1][j], dp[i-2][j-1]+slices[i-1+sp]);
                 }
             }
-        }
-        
+        }   
     return dp[m][n];
     }
     
-    
     int maxSizeSlices(vector<int>& slices) {
-        
         int ans = max(solver(slices, 0), solver(slices, 1));
-    
     return ans;
     }
 };
-
 
 
