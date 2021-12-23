@@ -42,7 +42,6 @@ public:
                cnt+= 2;
             }
             
-            
             else {                                  //else |only paste| i.e. paste the previous copied value
                 current+= copy;                   // A A A ...
                 cnt+= 1;
