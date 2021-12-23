@@ -34,9 +34,8 @@ public:
         if( ni >= 0 && nj >= 0 && nj <= n-1 && ni <= n-1){
             return true;
         }
-        return false;
+    return false;
     }
-    
     
     double knightProbability(int n, int k, int row, int column) {
         
