@@ -23,7 +23,6 @@ Constraints:
 0 <= nums[i] <= 1000
 */
 
-
 class Solution {
 public:
     int jump(vector<int>& nums) {
