@@ -53,9 +53,10 @@ public:
 
 //////////////////////////////////////////////// using binary search
 //     // Time Complexiy : (N log N)
-//     int ceil_Idx(vector<int>& tail,int start, int end, int number){
+    
+int ceil_Idx(vector<int>& tail,int start, int end, int number){
         
-while(start < end){
+  while(start < end){
      int mid = start + (end-start)/2;
 
      if(tail[mid] >= number){
@@ -67,9 +68,9 @@ while(start < end){
 return end;
 }
 
-
+//Binary search Solution -> nlogn 
 int lengthOfLIS(vector<int>& nums) {
-  //Binary search Solution -> nlogn 
+
   int n = nums.size();
   vector<int> tail;
   int len = 1;
@@ -87,6 +88,5 @@ int lengthOfLIS(vector<int>& nums) {
 }
 return len;   
 }
-
 
 
