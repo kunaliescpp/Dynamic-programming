@@ -41,11 +41,11 @@ public:
         for(int i = 0; i < n; i++){
             set<int> temp = mp[stones[i]];
             for(auto step : temp){
-                
-                if(mp.count(step + stones[i]) == 1){
-                    mp[stones[i]+step].insert(step);
-                    mp[stones[i]+step].insert(step+1);
-                    if(steps-1 > 0) mp[stones[i]+step].insert(step-1);    
+                int curr = step + stones[i];
+                if(mp.count(curr) == 1){
+                    mp[curr].insert(step);
+                    mp[curr].insert(step+1);
+                    if(steps-1 > 0) mp[curr].insert(step-1);    
                 }
             }
         }
