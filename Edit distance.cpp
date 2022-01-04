@@ -46,9 +46,9 @@ public:
                 if(word1[i-1] == word2[j-1]){
                     dp[i][j] = dp[i-1][j-1];
                 } else{
-                    int ins = dp[i-1][j];                 // (s.substr(1), t)   insert in t
-                    int rem = dp[i][j-1];                 // (s, t.substr(1))   remove from t
-                    int rep = dp[i-1][j-1];               // (s.substr(1), t.substr(1))
+                    int ins = dp[i][j-1];                
+                    int rem = dp[i-1][j-1];                
+                    int rep = dp[i-1][j-1];               
                     
                     dp[i][j] = min({ins, rem, rep}) + 1;
                 }
