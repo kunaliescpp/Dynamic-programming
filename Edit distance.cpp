@@ -47,7 +47,7 @@ public:
                     dp[i][j] = dp[i-1][j-1];
                 } else{
                     int ins = dp[i][j-1];                
-                    int rem = dp[i-1][j-1];                
+                    int rem = dp[i-1][j];                
                     int rep = dp[i-1][j-1];               
                     
                     dp[i][j] = min({ins, rem, rep}) + 1;
