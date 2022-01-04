@@ -34,20 +34,18 @@ public:
         
         int n = stones.size();
         map<int, set<int>> mp;
-        
+   
         for(auto x : stones) mp[x];
         
         mp[stones[0]].insert(1);
         for(int i = 0; i < n; i++){
-            
             set<int> temp = mp[stones[i]];
-            for(auto steps : temp){
+            for(auto step : temp){
                 
-                if(mp.count(steps + stones[i]) == 1){
-                    mp[stones[i]+steps].insert(steps);
-                    mp[stones[i]+steps].insert(steps+1);
-                    if(steps-1 > 0) mp[stones[i]+steps].insert(steps-1);
-                
+                if(mp.count(step + stones[i]) == 1){
+                    mp[stones[i]+step].insert(step);
+                    mp[stones[i]+step].insert(step+1);
+                    if(steps-1 > 0) mp[stones[i]+step].insert(step-1);    
                 }
             }
         }
