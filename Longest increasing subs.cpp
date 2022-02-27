@@ -27,66 +27,33 @@ Constraints:
 -10^4 <= nums[i] <= 10^4
 */
 
-/////////////////////////////////////////////// using DP
-class Solution {
-public:
-    // Dp Solution -> O(n^2);
-    int lengthOfLIS(vector<int>& nums) {
-    
-        int n = nums.size();
-        int *dp = new int [n];
-        dp[0] = 1;
-        int maxi = 0;
-        
-        for(int i = 1; i < n; i++){
-              dp[i] = 1;
-            for(int j = 0; j < i; j++){
-                if(nums[i] > nums[j]) dp[i] = max(dp[i], dp[j] + 1);
-            } 
-        
-            maxi = max(maxi, dp[i]);
+int lengthOfLIS(vector<int>& v) {
+    int n = v.size();
+
+    vector<int> lis;
+    lis.push_back(v[0]);
+    for(int i = 1; i < n; i++){
+        if(v[i] > lis[lis.size()-1]){
+            lis.push_back(v[i]);
+        } else{
+            // lower_bound(v.begin(), v.end(), nums[i]);
+            int m = lis.size();
+            int ans = 0;
+            int l = 0, r = m-1;
+            while(l <= r){
+                int mid = (l+r)/2;
+
+                if(v[i] <= lis[mid]){
+                    ans = mid;
+                    r = mid-1;
+                } else{
+                    l = mid+1;
+                }
+            }
+            lis[ans] = v[i];
         }
-    
-    return maxi;
-    }
-};
-
-//////////////////////////////////////////////// using binary search
-//     // Time Complexiy : (N log N)
-    
-int ceil_Idx(vector<int>& tail,int start, int end, int number){
-        
-  while(start < end){
-     int mid = start + (end-start)/2;
-
-     if(tail[mid] >= number){
-         end = mid;
-     } else {
-         start = mid + 1;
-     }
-  }
-return end;
-}
-
-//Binary search Solution -> nlogn 
-int lengthOfLIS(vector<int>& nums) {
-
-  int n = nums.size();
-  vector<int> tail;
-  int len = 1;
-
-  tail.push_back(nums[0]);
-
-  for(int i = 1; i < n; i++){
-
-      if(nums[i] > tail[len-1]){
-          tail.push_back(nums[i]); len++;
-      } else {
-          int c = ceil_Idx(tail, 0, len-1, nums[i]);
-          tail[c] = nums[i];
-      } 
-}
-return len;   
+    } 
+return (int)lis.size();   
 }
 
 
