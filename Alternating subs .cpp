@@ -34,59 +34,16 @@ Constraints:
 1 <= nums[i] <= 10^5
 */
 
+int maxAlternatingSum(vector<int>& v) {
+    int n = v.size();
 
-int maxAlternateSum(int arr[], int n){ // dec -> inc -> dec
-
-  if (n == 1) return arr[0];
-
-  int min = arr[0];
-  for (int i = 1; i < n; i++){
-      if(min > arr[i]) min = arr[i];
-  }
-  
-  if (min == arr[0]){
-    return arr[0];
-  }
-
-  vector dec(n, 0);
-  vector inc(n, 0);
-  
-  dec[0] = inc[0] = arr[0];
-  int flag = 0;
-  for(int i=0; i < n; i++){
-    for(int j=0; j < i; j++){
-      if (arr[i] < arr[j]){
-        dec[i] = max(dec[i], inc[j]+arr[i]);
-        flag = 1;
-      }
-
-      else if (arr[j] < arr[i] && flag == 1){
-        inc[i] = max(inc[i], dec[j]+arr[i]);
-      }
+    int inc = v[0], dec = 0;
+    for(int i = 1; i < n; i++){
+        int temp = inc;
+        inc = max(inc, dec+v[i]);
+        dec = max(dec, temp-v[i]);
     }
-  }
-
-  int result = INT_MIN;
-  for(int i = 0 ; i < n; i++){
-    result = max({result, inc[i], dec[i]});
-  }
-
-return result;
-}
-
-
-int main(){
-
-  int n;
-  cin >> n;
-  int arr[n];
-  for(int i = 0; i < n; i++){
-    cin >> arr[i];
-  }
-
-  cout<< maxAlternateSum(arr , n) << endl;
-
-return 0;
+return inc;
 }
 
 
