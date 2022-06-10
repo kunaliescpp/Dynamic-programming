@@ -1,7 +1,7 @@
 /* 
 Problem Link: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 
-Best Time to Buy and Sell Stock (2 transactions allowed)
+Best Time to Buy and Sell Stock ( <= 2 transactions allowed)
 
 You are given an array prices where prices[i] is the price of a given stock on the ith day.
 Find the maximum profit you can achieve. You may complete at most two transactions.
