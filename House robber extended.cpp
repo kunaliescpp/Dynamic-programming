@@ -1,5 +1,6 @@
 /* Problem Link: https://leetcode.com/problems/pizza-with-3n-slices/submissions/
 
+Pizza With 3n Slices
 
 There is a pizza with 3n slices of varying size, you and your friends will take slices of pizza as follows:
 You will pick any pizza slice.
