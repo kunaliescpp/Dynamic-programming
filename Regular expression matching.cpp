@@ -4,8 +4,8 @@ Problem Link: https://leetcode.com/problems/regular-expression-matching/
 Regular Expression Matching
 
 Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where:
-'.' Matches any single character.​​​​
-'*' Matches zero or more of the preceding element.
+'.' Matches any single character.                              // ".bc" = abc
+'*' Matches zero or more of the preceding element.             // "s*" = sssssss
 The matching should cover the entire input string (not partial).
 
 Example 1:
